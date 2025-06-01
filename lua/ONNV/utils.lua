@@ -57,6 +57,9 @@ function configfunctions.uselua(tab)
   assert(vim.fn.findfile(file)~="",string.format("file \"%s\" does not exist",file))
   return dofile(file);
 end
+function configfunctions.path(tab)
+  return GetONNVpath(tab[2]);
+end
 function configfunctions.toml(tab)
   local file=GetONNVpath(tab[2]);
   assert(vim.fn.findfile(file)~="",string.format("file \"%s\" does not exist",file))
