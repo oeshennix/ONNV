@@ -13,7 +13,7 @@ function module.setup(config)
   config=config or {};
   module.path=config.path or {
     vim.fn.getcwd().."/.ONNV.toml",
-    vim.fn.stdpath('data')..'/ONNV/config.toml',
+    vim.fn.stdpath('config')..'/ONNV/config.toml',
   };
   --[[
   config.pathname={
