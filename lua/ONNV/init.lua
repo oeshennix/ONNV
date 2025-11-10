@@ -58,7 +58,7 @@ function module.a()
   local configfile=module.findConfigFile()
   if(not configfile)then
     configfile=LSPConfigurationPath;
-    vim.uv.fs_mkdir(vim.fn.stdpath('data')..'/ONNV',tonumber('700',8));
+    vim.uv.fs_mkdir(vim.fn.stdpath('config')..'/ONNV',tonumber('700',8));
     fd=vim.uv.fs_open(LSPConfigurationPath,"w",tonumber("600",8));
     vim.uv.fs_write(fd,
 [=[#lsp
