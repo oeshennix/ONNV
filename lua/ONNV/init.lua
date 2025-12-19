@@ -1,4 +1,5 @@
-local toml=require('toml-lua');
+--local toml=require('toml-lua');
+local tinytoml=require('ONNV.tinytoml');
 local morph=require("ONNV.morph");
 local module={};
 
@@ -53,12 +54,15 @@ end;
 
 
 function module.retrieve(configfile)
+  --[[
   assert(vim.fn.findfile(configfile)~="","could not use config file");
   local ConfigFileBuffer=io.open(configfile,"r");
   assert(ConfigFileBuffer,"could not load config file");
   ConfigFileContents=ConfigFileBuffer:read("a")
   local Config=toml.parse(ConfigFileContents);
   Config=Config:Lua();
+  --]]
+  local Config=tinytoml.parse(configfile);
   return Config;
 end
 
