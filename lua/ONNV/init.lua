@@ -14,14 +14,12 @@ end;
 
 function module.setup(config)
   config=config or {};
-  module.path=config.path or {
-    vim.fn.getcwd().."/.ONNV.toml",
-    vim.fn.stdpath('config')..'/ONNV/config.toml',
-  };
+  module.path=config.path
+  assert(module.path,"search paths not provided when setting up ONNV");
 
   local configfile=module.findConfigFile()
   if(not configfile)then
-    print("Could not find config files");
+    return
   end
 
   vim.api.nvim_create_user_command('EditONNVconfig',function(info)
