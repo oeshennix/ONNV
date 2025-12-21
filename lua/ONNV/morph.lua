@@ -35,11 +35,15 @@ end
 function morphers.var(tab,baseconfig,allowed)
   return baseconfig.variables[tab[2]];
 end
+function morphers.env(tab,baseconfig,allowed)
+  return vim.env[tab[2]];
+end
 
 function M.morph(tab,baseconfig,allowed)
   for name,value in pairs(tab)do
     tab[name]=M.morphValue(value,baseconfig,allowed);
   end
 end
+M.morphers=morphers;
 
 return M;
